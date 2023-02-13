@@ -1,12 +1,12 @@
 config:
   apijson:
-    schema: test_path
+    schema: public
     db-version: 15.1
     debug: true
 
   db-host: 127.0.0.1
   db-name: owl
-  db-searchpath: test_path
+  db-searchpath: public
   db-port: 5432
   db-username: vector
   db-password: 123456
