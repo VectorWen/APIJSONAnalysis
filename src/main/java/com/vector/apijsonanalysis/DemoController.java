@@ -15,10 +15,12 @@ limitations under the License.*/
 package com.vector.apijsonanalysis;
 
 import java.net.URLDecoder;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import apijson.orm.Visitor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,7 +52,19 @@ public class DemoController extends APIJSONController<Long> {
 
 	@Override
 	public Parser<Long> newParser(HttpSession session, RequestMethod method) {
-		return super.newParser(session, method).setNeedVerify(false);  // TODO 这里关闭校验，方便新手快速测试，实际线上项目建议开启
+		// TODO 这里关闭校验，方便新手快速测试，实际线上项目建议开启
+		return super.newParser(session, method).setNeedVerify(true)
+				.setVisitor(new Visitor<Long>() {
+					@Override
+					public Long getId() {
+						return 1L;
+					}
+
+					@Override
+					public List<Long> getContactIdList() {
+						return null;
+					}
+				});
 	}
 
 	/**增删改查统一接口，这个一个接口可替代 7 个万能通用接口，牺牲一些路由解析性能来提升一点开发效率

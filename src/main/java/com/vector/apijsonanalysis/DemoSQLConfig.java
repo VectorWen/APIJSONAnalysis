@@ -36,7 +36,7 @@ public class DemoSQLConfig extends APIJSONSQLConfig {
 		//		TABLE_KEY_MAP.put(Access.class.getSimpleName(), "access");
 
 		//表名映射，隐藏真实表名，对安全要求很高的表可以这么做
-		TABLE_KEY_MAP.put("User", "apijson_user");
+//		TABLE_KEY_MAP.put("User", "apijson_user");
 		TABLE_KEY_MAP.put("Privacy", "apijson_privacy");
 	}
 
